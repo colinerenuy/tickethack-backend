@@ -6,8 +6,8 @@ const moment = require('moment')
 
 
 router.get('/', (req, res) => {
-    const {departure, arrival, date} = req.body;
-    console.log(date)
+    const {departure, arrival, date} = req.query;
+    console.log(date);
     const myDate = new Date(date);
     console.log(myDate.valueOf())
     //const tripDate = moment(date, moment.defaultFormat).toDate().toISOString().split('T')[0];
