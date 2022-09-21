@@ -3,6 +3,14 @@ var router = express.Router();
 const Cart = require('../models/cart');
 require('../models/connection');
 
+
+router.get('/', (req,res) => {
+    Cart.find().then(data => {
+        res.json({ cart :data })
+    })
+}
+)
+
 router.post('/', (req, res) => {
 
     const newCart = new Cart({
