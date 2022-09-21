@@ -1,10 +1,23 @@
 var express = require('express');
 var router = express.Router();
-const Trip = require('../models/trips');
+const Cart = require('../models/cart');
 require('../models/connection');
-const moment = require('moment')
 
+router.post('/', (req, res) => {
 
+    const newCart = new Cart({
+        departure: `${req.body.departure}`,
+        arrival: `${req.body.arrival}`,
+        date: `${req.body.date}`,
+        price: `${req.body.price}`,
+       });
+       
+       newCart.save().then(() => {
+        console.log('Added to cart!');
+       });
+
+    res.json({ AddedToCart: newCart });
+   });
 
 
 module.exports = router;
