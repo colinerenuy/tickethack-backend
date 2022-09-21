@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
 
 const cartSchema = mongoose.Schema({
- departure: String,
- arrival: String,
- date: Date,
- price: Number,
+ tripInCart: {type: mongoose.Schema.Types.ObjectId, ref: 'trips' },
+ isPaid: Boolean
 });
 
 const Cart = mongoose.model('cart', cartSchema);
