@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
             return dateFormat.valueOf() == myDate.valueOf();
         })
         console.log(tripOnDate)
-        res.json({ tripOnDate });
+        res.json({ trips: tripOnDate });
     });
    });
 
