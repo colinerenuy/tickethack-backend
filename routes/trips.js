@@ -25,4 +25,22 @@ router.get('/', (req, res) => {
     });
    });
 
+
+   router.post('/', (req, res) => {
+    
+    //const tripDate = moment(date, moment.defaultFormat).toDate().toISOString().split('T')[0];
+   // console.log(tripDate);
+   // console.log(tripDate.valueOf())
+    
+    Trip.find({departure: departure, arrival: arrival})
+    .then(data => {
+        const tripOnDate = data.filter(trip => {
+            const tripDate = moment(trip.date, moment.defaultFormat).toDate().toISOString().split('T')[0];
+            const dateFormat = new Date(tripDate);
+            return dateFormat.valueOf() == myDate.valueOf();
+        })
+        res.json({ trips: tripOnDate });
+    });
+   });
+
    module.exports = router;
