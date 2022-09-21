@@ -6,7 +6,9 @@ require('../models/connection');
 
 
 router.get('/', (req,res) => {
-    Cart.find().then(data => {
+    Cart.find()
+    .populate('tripInCart')
+    .then(data => {
         res.json({ cart :data })
     })
 }
